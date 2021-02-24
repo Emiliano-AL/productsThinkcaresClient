@@ -12,13 +12,15 @@ function List({ match }) {
   }, []);
   
   function deleteCompany(id) {
-    setCompanies(companies.map(x => {
-        if (x.id === id) { x.isDeleting = true; }
-        return x;
-    }));
-    companyService.delete(id).then(() => {
-      setCompanies(companies => companies.filter(x => x.id !== id));
-    });
+    if(window.confirm('¿desea eliminar esta empresa?')){
+        setCompanies(companies.map(x => {
+            if (x._id === id) { x.isDeleting = true; }
+            return x;
+        }));
+        companyService.delete(id).then(() => {
+            setCompanies(companies => companies.filter(x => x._id !== id));
+        });
+    }
   }
   
   return (

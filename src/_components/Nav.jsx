@@ -6,7 +6,7 @@ function Nav() {
         <nav className="navbar navbar-expand navbar-dark bg-dark">
             <div className="navbar-nav">
                 <NavLink exact to="/" className="nav-item nav-link">Home</NavLink>
-                <NavLink to="/users" className="nav-item nav-link">Users</NavLink>
+                <NavLink to="/products" className="nav-item nav-link">Productos</NavLink>
                 <NavLink to="/companies" className="nav-item nav-link">Empresas</NavLink>
             </div>
         </nav>

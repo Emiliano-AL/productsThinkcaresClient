@@ -53,7 +53,7 @@ function AddEdit({ history, match }) {
   useEffect(() => {
     if (!isAddMode) {
       // get user and set form fields
-      userService.getById(id).then(user => {
+      companyService.getById(id).then(company => {
         const fields = ['name', 'description'];
         fields.forEach(field => 
           setValue(field, company[field]));
