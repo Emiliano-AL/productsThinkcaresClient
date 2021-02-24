@@ -1,7 +1,8 @@
 import config from 'config';
 import { fetchWrapper } from '@/_helpers';
 
-const baseUrl = `http://localhost:3000/api/companies`;
+// const baseUrl = `http://localhost:3000/api/companies`;
+const baseUrl = `${config.apiUrl}/companies`;
 
 export const companyService = {
   getAll,
