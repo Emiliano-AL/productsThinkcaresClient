@@ -1,8 +1,8 @@
 import config from 'config';
 import { fetchWrapper } from '@/_helpers';
 
-// const baseUrl = `http://localhost:3000/api/products`;
-const baseUrl = `${config.apiUrl}/products`;
+const baseUrl = `http://localhost:3000/api/products`;
+// const baseUrl = `${config.apiUrl}/products`;
 
 export const productService = {
   getAll,

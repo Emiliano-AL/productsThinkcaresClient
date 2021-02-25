@@ -29,9 +29,17 @@ function AddEdit({ history, match }) {
   }
   
   function createProduct(data) {
-    const product = { ...data, sku: makeSKU(), active: true }
+    // const product = { ...data, sku: makeSKU(), active: true };
+    const product = {
+      description: data.description, 
+      title: data.title,
+      company: data.company.split(','),
+      sku: makeSKU(), active: true
+    };
+    console.log(product);
     return productService.create(product)
       .then((res) => {
+        console.log(res);
         alertService.success('Producto agregado', { keepAfterRouteChange: true });
         history.push('.');
       })
@@ -88,7 +96,7 @@ function AddEdit({ history, match }) {
             </div>
             <div className="form-group col-6">
                 <label>Empresa</label>
-                <select name="company" 
+                <select name="company" multiple 
                   ref={register} 
                   className={`form-control ${errors.company ? 'is-invalid' : ''}`}>
                   <option value=""></option>

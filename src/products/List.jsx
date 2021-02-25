@@ -25,15 +25,23 @@ function List({ match }) {
   }
   
   function handleChange(event) {
-    console.log('val: ', event.target.value);
+    // console.log('val: ', event.target.value);
     if(event.target.value.length >= 3){
       let term = event.target.value.toLowerCase();
       //search action
       let prods = products.filter( (prod) => {
         if(prod.title.toLowerCase().includes(term) )
           return prod;
+       
+        let result = prod.company.map( c => c.name);
+        result = result.join();
+        console.log(result);
+        if(result.toLowerCase().includes(term)){
+          console.log(prod);
+          return prod;
+        }        
       });
-      console.log(prods);
+      // console.log(prods);
       setProducts(prods);
     }
     if(event.target.value === ""){
@@ -72,7 +80,13 @@ function List({ match }) {
               <td>{prod.sku}</td>
               <td>{prod.active ? 'Activo' : 'Inactivo'}</td>
               <td>{prod.description}</td>
-              <td>{prod.company?.name}</td>
+              <td>{
+                // prod.company?.name
+                prod.company.map(c => {
+                  return  `${c.name}, `
+                })
+                }
+              </td>
               <td style={{ whiteSpace: 'nowrap' }}>
                   <Link to={`${path}/edit/${prod._id}`}
                       className="btn btn-sm btn-primary mr-1">Editar
